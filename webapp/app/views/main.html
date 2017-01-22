@@ -1,0 +1,44 @@
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+  </ul>
+</div>
+<div>
+    <div class="form-group">
+      <span>姓：</span>
+      <span><input name="firstName" ng-model="firstName" /></span>
+      <span>名：</span>
+      <span><input name="lastName" ng-model="lastName" /></span>
+    </div>
+    <div>
+      <span>职位：</span>
+      <span><input name="profession" ng-model="profession" /></span>
+    </div>
+  <div>
+    <span>公司名称：</span>
+    <span><input name="orgName" ng-model="orgName" /></span>
+  </div>
+  <div>
+    <span>公司地址：</span>
+    <span><input name="headquarter" ng-model="headquarter" /></span>
+  </div>
+  <div>
+    <button ng-click="save()" >保存</button>
+  </div>
+</div>
+
+
+  <ul>
+    <li ng-repeat="person in persons">
+      {{person.firstName}} {{person.lastName}} 是 一名 {{person.profession}} 公司所在地:
+      <ul>
+        <li ng-repeat="company in person.companies">
+          {{company.orgName}} -  {{company.headquarter}}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
