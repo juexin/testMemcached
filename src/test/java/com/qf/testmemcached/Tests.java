@@ -19,8 +19,8 @@ public class Tests {
 
 	@Test
 	public void tests() throws Exception {
-		memcachedClient.set("name",0,"czg");
-		System.out.println(memcachedClient.get("name"));
+		/*memcachedClient.set("name",0,"czg");
+		System.out.println(memcachedClient.get("name"));*/
 	}
 	@Test
 	public void testCache(){
