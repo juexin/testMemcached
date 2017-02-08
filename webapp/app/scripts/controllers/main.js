@@ -9,7 +9,7 @@ angular.module('webappApp')
     ];
     $scope.save=save;
 
-    $http.get('http://localhost:8080/persons').
+    $http.get('http://192.168.48.128:8080/persons').
     success(function(data) {
         $scope.persons = data;
     });
@@ -26,7 +26,7 @@ angular.module('webappApp')
       }
       $http({
         method:'POST',
-        url:'http://localhost:8080/saveperson',
+        url:'http://192.168.48.128:8080/saveperson',
         data:person,
         headers: {
 
