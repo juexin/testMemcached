@@ -30,11 +30,15 @@ public class MemCache {
             Object value = null;  
             try {  
                 key = this.getKey(key);
-                if(key.contains("_0")){
-                    value = JsonUtils.json2list((String) memcachedClient.get(key), Person.class);
-                }else{
-                    value = JsonUtils.toObject((String) memcachedClient.get(key), Person.class);
+                value = memcachedClient.get(key);
+                if(null!=value){
+                    if(key.contains("_0")){
+                        value = JsonUtils.json2list((String) value, Person.class);
+                    }else{
+                        value = JsonUtils.toObject((String) value, Person.class);
+                    }
                 }
+
             } catch (TimeoutException e) {
                 log.warn("获取 Memcached 缓存超时", e);  
             } catch (InterruptedException e) {  
