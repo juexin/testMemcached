@@ -31,7 +31,7 @@ public class PersonService implements IPersonService
     {
         return personRepository.findAll();
     }
-    @Cacheable(value = PERSON,key = "#person.lastName")
+    @Cacheable(value = PERSON,key = "#person.id")
     @Override
     public Person save(final Person person)
     {

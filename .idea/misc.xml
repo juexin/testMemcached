@@ -4,7 +4,8 @@
     <option name="defaultSettings" value="true" />
     <option name="id" value="1471492518316" />
     <option name="name" value="default" />
-    <option name="pathToConfigFileJava" value="D:/codetemplatesNew.xml" />
+    <option name="pathToConfigFileJava" value="$PROJECT_DIR$/../../posp/code-formatter.xml" />
+    <option name="selectedJavaProfile" value="myEclipse" />
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
