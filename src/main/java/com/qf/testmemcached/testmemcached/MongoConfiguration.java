@@ -18,7 +18,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration{
     @Override
     protected String getDatabaseName()
     {
-        return "sprmongo";
+        return "testMemcachedMongo";
     }
 
     @Override

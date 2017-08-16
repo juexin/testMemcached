@@ -7,14 +7,12 @@ import com.qf.testmemcached.testmemcached.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author gpotes
@@ -38,7 +36,8 @@ public class PersonController {
    */
   @RequestMapping("/persons")
   public List<Person> findAll() {
-    return personService.findAll();
+    List<Person> list = personService.findAll();
+    return list;
   }
 
   /**
@@ -52,12 +51,13 @@ public class PersonController {
   /**
    * @return
    */
-  @RequestMapping(value = "/saveperson", method = RequestMethod.POST)
+  @RequestMapping(value = "/savePerson", method = RequestMethod.POST)
   public List<Person> save(HttpServletRequest request) {
     Map m = request.getParameterMap();
     Person person = JsonUtils.toObject((String) m.keySet().iterator().next(), Person.class);
-    Person savedPerson = personService.save(person);
-    HttpHeaders httpHeaders = new HttpHeaders();
+    person.setId(UUID.randomUUID().toString());
+    personService.save(person);
+//    HttpHeaders httpHeaders = new HttpHeaders();
 
 //        Link forOnePerson = new PersonResource(savedPerson).getLink("self");
 //        httpHeaders.setLocation(URI.create(forOnePerson.getHref()));
@@ -66,6 +66,6 @@ public class PersonController {
 //        httpHeaders.setLocation(
 //            ServletUriComponentsBuilder.fromCurrentRequest()
 //            .path("person/{id}").buildAndExpand(savedPerson.getId()).toUri());
-    return personService.findAll();
+    return this.findAll();
   }
 }

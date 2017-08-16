@@ -2,7 +2,9 @@ package com.qf.testmemcached.testmemcached.domain;
 
 import org.springframework.data.mongodb.core.index.Indexed;
 
-public class Company
+import java.io.Serializable;
+
+public class Company implements Serializable
 {
     @Indexed (unique = true)
     private String orgName;

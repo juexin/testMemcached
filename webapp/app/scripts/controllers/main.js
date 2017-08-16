@@ -26,11 +26,11 @@ angular.module('webappApp')
       }
       $http({
         method:'POST',
-        url:'http://192.168.48.128:8080/saveperson',
+        url:'http://192.168.48.128:8080/savePerson',
         data:person,
         headers: {
 
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/x-www-form-urlencoded'
 
         }
       }). success(function(data) {

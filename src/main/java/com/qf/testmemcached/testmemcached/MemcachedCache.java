@@ -53,7 +53,12 @@ public class MemcachedCache implements Cache {
 
   @Override
   public ValueWrapper putIfAbsent(Object key, Object value) {
-    return null;
+    ValueWrapper wrapper = null;
+    memCache.put(key.toString(),value);
+    if (value != null) {
+      wrapper = new SimpleValueWrapper(value);
+    }
+    return wrapper;
   }
 
   @Override

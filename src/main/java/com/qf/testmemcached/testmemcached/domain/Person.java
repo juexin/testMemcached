@@ -1,11 +1,12 @@
 package com.qf.testmemcached.testmemcached.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-public class Person
+public class Person implements Serializable
 {
     @Id
     private String id;

@@ -66,6 +66,21 @@ public class XmemcahedConfiguration extends CachingConfigurerSupport {
             }
         };
     }
+    @Override
+    public KeyGenerator keyGenerator() {
+        return new KeyGenerator() {
+            @Override
+            public Object generate(Object target, Method method, Object... params) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(method.getName().replaceAll("get|evict", "") + ":");
+                for (Object obj : params) {
+                    sb.append(obj.toString() + "&");
+                }
+                return sb.toString().replaceAll("&+$", "");
+            }
+        };
+    }
+
     @Bean
     public CacheManager cacheManager(MemcachedClient memcachedClient){
         MemcachedCacheManager cacheManager = new MemcachedCacheManager(memcachedClient);
